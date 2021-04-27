@@ -9,7 +9,7 @@ Este es un archivo que debe completarse con los datos utilizados en el TPI. Este
 Una aplicacion que permita diferenciar tres tipos de usuarios (cliente, entrenador y dueño) en la cual cada uno tendra accesos a diferentes funciones.
 En el caso del dueño tendra la posiblidad de  gestionar a los entrenadores, y podra ver informacion sobre cuantos clientes llevan los mismos.
 El entrandor podra asignar rutinas a los clientes y ver el feedback de los mismos. Comentarios y progresos en base a las anotaciones.
-El cliente tendra la opcion de recibir una rutina o programar las propias.
+El cliente tendra la opcion de recibir una rutina o programar las propias. Además, en la rutina podra cargar los pesos utilizados en cada serie junto a las repeticiones, y si es necesario realizar un feedback. Podra tener un registro de sus progresos.
 Una rutina estara compuesta por ejercicios de forma individual o en conjuntos (biseries, triseries, circuitos) en las cuales se determinara la cantidad de series/vueltas y las repeticiones por cada una. Adicionalmente, se tendran los descansos recomendados junto con alguna aclaración de ser necesaria. 
 
 ## Modelo de Dominio
