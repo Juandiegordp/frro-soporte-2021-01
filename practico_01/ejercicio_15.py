@@ -55,7 +55,13 @@ def medir_tiempo(func: Callable[[], int]) -> Tuple[int, float]:
     Restricción: La función no debe tomar parámetros y por lo tanto se
     recomienda usar partial.
     """
-    pass # Completar
+    tupla = []
+    start = perf_counter()
+    f = partial(func)
+    tupla.append(f())
+    elapsed = perf_counter() - start
+    tupla.append(elapsed)
+    return tuple(tupla)
 
 
 # NO MODIFICAR - INICIO
@@ -73,7 +79,15 @@ def medir_tiempo(func: Callable[[Sequence[int], int], int]) -> Callable[[Sequenc
     partial. En este caso se debe devolver una función que devuelva la tupla y
     tome una cantidad arbitraria de parámetros.
     """
-    pass # Completar
+    def aplicarFuncion(*args):
+        nonlocal func
+        tupla = []
+        start = perf_counter()
+        tupla.append(func(*args))
+        elapsed = perf_counter() - start
+        tupla.append(elapsed)
+        return tuple(tupla)
+    return (aplicarFuncion)
 
 
 # NO MODIFICAR - INICIO
@@ -127,7 +141,13 @@ def memoized(func):
     tiempo para la función calcular posibilidades. Prestar atención a los tiempo
     de ejecución
     """
-    pass # Completar
+    memory = {}
+
+    def wrapper(n):
+        if n not in memory:
+            memory[n] = func
+        return memory[n]
+    return wrapper(func)
 
 
 @medir_tiempo
@@ -165,13 +185,20 @@ tienen ventajas adicionales  ya que al utilizar el patrón memoized, las
 funciones recursivas permiten ejecuciones más rápidas para las llamadas
 sucesivas.
 """
+from math import factorial
 
 
 @medir_tiempo
 @memoized
 def calcular_posibilidades_recursiva(lista: Sequence[int], limite: int) -> int:
     """Re-Escribir de manera recursiva"""
-    pass # Completar
+    n = len(lista)
+    count = 0
+    if limite > 0:
+        count = int((factorial(n)) / (factorial(n - range(limite)[-1])))
+        s, t = calcular_posibilidades_recursiva(lista, limite - 1)
+        count = count + s
+    return (count)
 
 
 # NO MODIFICAR - INICIO

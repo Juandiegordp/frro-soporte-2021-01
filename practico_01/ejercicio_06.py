@@ -7,7 +7,15 @@ def numeros_al_final_basico(lista: List[Union[float, str]]) -> List[Union[float,
     """Toma una lista de enteros y strings y devuelve una lista con todos los
     elementos numéricos al final.
     """
-    pass # Completar
+    numeros = []
+    letras = []
+    for i in range(0, len(lista)):
+        if type(lista[i]) == int:
+            numeros.append(float(lista[i]))
+        else:
+            letras.append(lista[i])
+    letras.extend(numeros)
+    return letras
 
 
 # NO MODIFICAR - INICIO
@@ -20,7 +28,10 @@ assert numeros_al_final_basico([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 
 
 def numeros_al_final_comprension(lista: List[Union[float, str]]) -> List[Union[float, str]]:
     """Re-escribir utilizando comprensión de listas."""
-    pass # Completar
+    numeros = [num for num in lista if type(num) == int]
+    letras = [letra for letra in lista if type(letra) == str]
+    letras.extend(numeros)
+    return letras
 
 
 # NO MODIFICAR - INICIO
@@ -35,7 +46,14 @@ def numeros_al_final_sorted(lista: List[Union[float, str]]) -> List[Union[float,
     """Re-escribir utilizando la función sorted con una custom key.
     Referencia: https://docs.python.org/3/library/functions.html#sorted
     """
-    pass # Completar
+    def compara(a):
+        if type(a) == int:
+            retorno = 1
+        else:
+            retorno = -1
+        return retorno
+
+    return sorted(lista, key=compara)
 
 
 # NO MODIFICAR - INICIO
@@ -50,7 +68,18 @@ def numeros_al_final_filter(lista: List[Union[float, str]]) -> List[Union[float,
     """CHALLENGE OPCIONAL - Re-escribir utilizando la función filter.
     Referencia: https://docs.python.org/3/library/functions.html#filter
     """
-    pass # Completar
+    def esNro(a):
+        if type(a) == int:
+            return True
+
+    def esLetra(a):
+        if type(a) != int:
+            return True
+
+    numeros = list(filter(esNro, lista))
+    letras = list(filter(esLetra, lista))
+    letras.extend(numeros)
+    return letras
 
 
 # NO MODIFICAR - INICIO
@@ -64,7 +93,7 @@ if __name__ == "__main__":
 
 def numeros_al_final_recursivo(lista: List[Union[float, str]]) -> List[Union[float, str]]:
     """CHALLENGE OPCIONAL - Re-escribir de forma recursiva."""
-    pass # Completar
+    pass  # Completar
 
 
 # NO MODIFICAR - INICIO
