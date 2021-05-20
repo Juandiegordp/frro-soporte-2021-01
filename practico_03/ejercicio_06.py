@@ -16,7 +16,11 @@ class Article:
 
     # NO MODIFICAR - FIN
 
-    # Completar
+    def __str__(self):
+        return(str(self.name))
+
+    #def __repr__(self) -> str:
+    #    return f"Article('{self.name}')"
 
 
 # NO MODIFICAR - INICIO
@@ -49,8 +53,11 @@ class ShoppingCart:
 
     # NO MODIFICAR - FIN
 
-    # Completar
-
+    def __str__(self):
+        return str([str(art) for art in self.articles])
+    
+    #def __repr__(self): ta mal
+    #    return f"ShoppingCart({[art for art in self.articles]})"
 
 # NO MODIFICAR - INICIO
 
